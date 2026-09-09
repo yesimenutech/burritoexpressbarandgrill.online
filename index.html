@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burrito Express – Authentic Mexican Food & Delivery</title>
+    
+    <!-- SEO & Open Graph Meta Tags -->
+    <meta name="description" content="Enjoy authentic Mexican food at Burrito Express. Fresh ingredients, bold flavors, and traditional recipes. Order online or visit us in Indianapolis!">
+    <meta name="keywords" content="mexican food, burrito express, tacos, indianapolis restaurant, delivery, authentic mexican">
+    <meta property="og:title" content="Burrito Express – Authentic Mexican Food">
+    <meta property="og:description" content="Experience the best Mexican cuisine in Indianapolis. Order online for pickup or delivery!">
+    <meta property="og:image" content="https://res.cloudinary.com/dzklt0a5u/image/upload/v1788983458/IMG-20260819-WA0203_gzyva9.jpg">
+    <meta property="og:type" content="restaurant.restaurant">
+    <meta property="og:url" content="https://burritoexpress.onlineordering.io">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Schema.org for Restaurant -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Burrito Express",
+      "image": "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788983421/BurritoExpressLogo_3_k1qabb.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "9355 E Washington St",
+        "addressLocality": "Indianapolis",
+        "addressRegion": "IN",
+        "postalCode": "46229",
+        "addressCountry": "US"
+      },
+      "telephone": "317-897-9993",
+      "servesCuisine": "Mexican",
+      "priceRange": "$$",
+      "menu": "https://burritoexpress.onlineordering.io/en?locationId=1541506&orderMode=in_store_pickup",
+      "acceptsReservations": "true"
+    }
+    </script>
+
+    <link rel="icon" id="favicon" type="image/png" href="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto:eco,dpr_auto,w_250/v1788983421/BurritoExpressLogo_3_k1qabb.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --color-primary: #BD1E24;
+            --color-primary-hover: #9c171d;
+            --color-text-dark: #1A1A1A;
+            --color-text-light: #4A4A4A;
+            --color-white: #ffffff;
+            --color-background: #F5F5F5;
+            --color-footer: #111111;
+            --color-accent-green: #689F38;
+            --color-accent-orange: #f29c38;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-background);
+            overflow-x: hidden;
+            /* Subtle Mexican Tile Background Pattern */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a1a1a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-dark);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid var(--color-primary);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--color-text-dark);
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 10px;
+            border-left: 2px solid #e0e0e0;
+            padding-left: 20px;
+        }
+
+        .lang-btn {
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .lang-btn:not(.active) {
+            font-weight: 400;
+            color: #999;
+        }
+
+        .navbar-toggler {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .toggler-icon {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Updated fallback URL */
+            background-image: url('https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto,w_1920/v1788983458/IMG-20260819-WA0203_gzyva9.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-top: 60px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(26,26,26,0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--color-white);
+            padding: 0 20px;
+            max-width: 900px;
+        }
+
+        .hero-logo-container {
+            margin-bottom: 20px;
+        }
+
+        .hero-logo {
+            max-height: 180px;
+            width: auto;
+            display: inline-block;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--color-white);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .hero-address {
+            font-size: 18px;
+            font-weight: 400;
+            color: #f0f0f0;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .hero-address svg {
+            width: 20px; height: 20px;
+            fill: var(--color-primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .btn-filled {
+            background: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            color: var(--color-white);
+            box-shadow: 0 4px 15px rgba(189, 30, 36, 0.4);
+        }
+
+        .btn-filled:hover {
+            background: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(189, 30, 36, 0.6);
+            color: var(--color-white);
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            color: var(--color-primary);
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            color: var(--color-text-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-primary);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .about-images {
+            position: relative;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .about-image {
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            object-fit: cover;
+            border: 4px solid var(--color-white);
+        }
+
+        .about-img-1 {
+            width: 70%;
+            height: 350px;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .about-img-2 {
+            width: 60%;
+            height: 300px;
+            bottom: -30px;
+            right: 0;
+            z-index: 2;
+            border-color: var(--color-primary);
+        }
+
+        /* Gallery / Menu Section */
+        .gallery-section {
+            padding: 100px 0;
+        }
+
+        #gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        /* Clean Image Grid for Gallery */
+        .gallery-item {
+            position: relative;
+            background: var(--color-white);
+            border: 2px solid var(--color-primary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 100px 0;
+            background-color: var(--color-white);
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23bd1e24' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .info-box {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--color-white);
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            border-top: 5px solid var(--color-primary);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .info-item {
+            padding: 20px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            fill: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .info-item h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .info-item p {
+            color: var(--color-text-light);
+            font-size: 16px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-footer);
+            color: #d1d1d1;
+            padding: 80px 0 30px;
+            border-top: 5px solid var(--color-primary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-title {
+            font-size: 24px;
+            color: var(--color-white);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--color-primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+
+        .social-icons-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            color: var(--color-white);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 15px;
+            color: #888;
+        }
+
+        /* Hidden elements but kept in DOM to satisfy constraints */
+        .hidden-menutech-tags {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-images {
+                order: -1;
+                margin-bottom: 40px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero-title {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-toggler {
+                display: flex;
+            }
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--color-white);
+                padding: 20px;
+                gap: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+                border-bottom: 3px solid var(--color-primary);
+            }
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            .lang-switch {
+                border-left: none;
+                border-top: 2px solid #e0e0e0;
+                padding-left: 0;
+                padding-top: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-title {
+                font-size: 38px;
+            }
+            .info-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+
+    <script>
+        // Menutech Data Initialization
+        window.MENU_TECH_STATE = {
+            "lang": "en",
+            "showReservations": false,
+            "showAbout": true,
+            "showPromo": false,
+            "showGallery": true,
+            "showCatering": false,
+            "showInfo": true,
+            "showDelivery": false,
+            "cuid": "00000",
+            "ruid": "00000",
+            "title": "Burrito Express",
+            "logoImg": "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788983421/BurritoExpressLogo_3_k1qabb.png",
+            "heroAddress": "9355 E Washington St, Indianapolis, IN 46229",
+            "heroImg": "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788983458/IMG-20260819-WA0203_gzyva9.jpg",
+            "aboutImg1": "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788983491/IMG-20260819-WA0214_vwwu6s.jpg",
+            "aboutImg2": "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788983493/IMG-20260819-WA0219_zvmdl8.jpg",
+            "gallery": [
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989724/wings_sods1x.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989725/TORTA_qem0qz.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989725/plato_bskjxc.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989726/pescado_spm6vf.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989727/MILANESA_bwkmpu.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989728/image_-_2026-09-08T112118.785_lvlbca.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989728/caldo_z9woji.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989729/arro_o8sjf3.png",
+                "https://res.cloudinary.com/dzklt0a5u/image/upload/v1788989730/arroz_iy9f6q.png"
+            ],
+            "info": {
+                "hours": "Monday to Thursday: 11AM – 10PM\nFriday and Saturday: 11AM – 10:30 PM\nSunday: 11AM – 9PM",
+                "phone": "317-897-9993",
+                "address": "9355 E Washington St, Indianapolis, IN 46229"
+            },
+            "socials": [
+                {"platform": "instagram", "url": "https://www.instagram.com/burritoexpressrestaurant/"},
+                {"platform": "facebook", "url": "https://www.facebook.com/burritoexpressin?_rdc=1&_rdr#"},
+                {"platform": "twitter", "url": "https://www.tiktok.com/@burrito.express31"}
+            ],
+            "paragraphs": {
+                "about": "Desde hace 4 años, nuestro restaurante nació con la ilusión de ofrecer comida mexicana llena de sabor, tradición y ese toque especial que hace que nuestros clientes quieran regresar.\n\nCon el paso de los años, nos hemos convertido en un lugar donde las familias y amigos pueden disfrutar de platillos preparados con dedicación y mucho cariño. Entre los favoritos de nuestros clientes se encuentran el Burrito Loco, el Burrito Texano y nuestro delicioso Burrito Bowl.\n\nPero si hay un platillo que se ha ganado un lugar especial en el corazón de nuestros clientes, es nuestro Arroz con Pollo, uno de los más populares y queridos de la casa.\n¡Gracias por ser parte de nuestra historia y por permitirnos seguir sirviendo sabor en cada plato!"
+            }
+        };
+    </script>
+</head>
+<body>
+
+    <!-- Menutech Core Tags Maintained but Hidden visually to keep functionality without breaking custom layout -->
+    <div class="hidden-menutech-tags">
+        <script src="https://www.fbgcdn.com/embedder/js/ewm2.js"></script>
+        <script src="https://menutech.xyz/menutechUI.min.js"></script>
+        <menutech-orders id="hero-orders" cuid="00000" ruid="00000" data-glf-cuid="00000" data-glf-ruid="00000"></menutech-orders>
+        <menutech-reservations id="hero-reservations" cuid="00000" ruid="00000" data-glf-cuid="00000" data-glf-ruid="00000" data-glf-reservation="true"></menutech-reservations>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="navbar-brand" id="nav-brand">Burrito Express</a>
+            
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="nav-link" data-es="Inicio" data-en="Home">Home</a></li>
+                <li><a href="#about-section" class="nav-link" data-es="Nosotros" data-en="About Us">About Us</a></li>
+                <li><a href="#gallery-section" class="nav-link" data-es="Menú" data-en="Menu">Menu</a></li>
+                <li><a href="#info-section" class="nav-link" data-es="Ubicación" data-en="Location">Location</a></li>
+                <li class="lang-switch">
+                    <span id="lang-es" class="lang-btn">ES</span>
+                    <span style="color: #ccc; font-weight: 300;">|</span>
+                    <span id="lang-en" class="lang-btn active">EN</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo-container">
+                <img src="https://res.cloudinary.com/dzklt0a5u/image/upload/f_auto,q_auto:eco,dpr_auto,w_400/v1788983421/BurritoExpressLogo_3_k1qabb.png" id="hero-logo" alt="Burrito Express Logo" class="hero-logo">
+            </div>
+            
+            <h1 class="hero-title" data-es="Sabor Auténtico Mexicano" data-en="Authentic Mexican Flavor">Authentic Mexican Flavor</h1>
+            
+            <div class="hero-buttons">
+                <!-- Custom Direct URL Ordering Button Requested without icon -->
+                <a href="https://burritoexpress.onlineordering.io/en?locationId=1541506&orderMode=in_store_pickup" target="_blank" class="btn btn-filled">
+                    <span data-es="Ordenar En Línea" data-en="Order Online">Order Online</span>
+                </a>
+            </div>
+            
+            <p class="hero-address">
+                <svg viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/></svg>
+                <span id="hero-address">9355 E Washington St, Indianapolis, IN 46229</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-header" style="text-align: left; margin-bottom: 30px;">
+                        <span class="section-subtitle" data-es="Nuestra Historia" data-en="Our Story">Our Story</span>
+                        <h2 class="section-title" id="about-title" data-es="Somos Burrito Express" data-en="We are Burrito Express">We are Burrito Express</h2>
+                    </div>
+                    <div id="about-content">
+                        <p id="about-p1">At Restaurant Pronto, we take pride in bringing our guests vibrant and authentic Mexican cuisine, crafted with care and rich culinary tradition. Every dish we serve is full of bold flavors and prepared to deliver a memorable dining experience.</p>
+                        <p id="about-p2">The secret to our success is simple: creating exceptional meals using fresh, high-quality ingredients that capture the true essence of Mexican cooking in every bite.</p>
+                        <p id="about-p3">Our mission is to help you savor the moments that truly matter. Enjoy great food, sip on a refreshing drink, and above all, unwind and feel at home. We sincerely appreciate your continued support and trust.</p>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <img id="about-img-1" src="" alt="Authentic Mexican Food" class="about-image about-img-1" loading="lazy">
+                    <img id="about-img-2" src="" alt="Fresh Ingredients" class="about-image about-img-2" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu / Gallery Section -->
+    <section class="gallery-section" id="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-es="Recetas Tradicionales" data-en="Traditional Recipes">Traditional Recipes</span>
+                <h2 class="section-title" id="gallery-title" data-es="Nuestros Platillos" data-en="Our Dishes">Our Dishes</h2>
+            </div>
+            
+            <div id="gallery-container">
+                <!-- Dynamically generated image grid by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section" id="info-section">
+        <div class="container">
+            <div class="info-box">
+                <div class="section-header">
+                    <span class="section-subtitle" data-es="Visítanos" data-en="Visit Us">Visit Us</span>
+                    <h2 class="section-title" data-es="Información" data-en="Information">Information</h2>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <svg class="info-icon" viewBox="0 0 24 24"><path d="M12 20C16.4 20 20 16.4 20 12S16.4 4 12 4 4 7.6 4 12 7.6 20 12 20M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M17 13.9L16.3 15.2L11 12.3V7H12.5V11.4L17 13.9Z"/></svg>
+                        <h4 data-es="Horarios" data-en="Opening Hours">Opening Hours</h4>
+                        <p id="info-hours"></p>
+                    </div>
+                    <div class="info-item">
+                        <svg class="info-icon" viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+                        <h4 data-es="Teléfono" data-en="Phone">Phone</h4>
+                        <p id="info-phone"></p>
+                    </div>
+                    <div class="info-item">
+                        <svg class="info-icon" viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/></svg>
+                        <h4 data-es="Dirección" data-en="Address">Address</h4>
+                        <p id="info-address"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-title" data-es="Burrito Express" data-en="Burrito Express">Burrito Express</h4>
+                    <p id="footer-desc" data-es="Comida auténtica, ingredientes frescos y tradición mexicana en cada bocado." data-en="Authentic food, fresh ingredients, and Mexican tradition in every bite.">Authentic food, fresh ingredients, and Mexican tradition in every bite.</p>
+                    <div id="social-icons" class="social-icons-container">
+                        <!-- Socials dynamic -->
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title" data-es="Contáctanos" data-en="Contact Us">Contact Us</h4>
+                    <p><svg style="width:20px;height:20px;fill:var(--color-primary);" viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/></svg> <span id="footer-address"></span></p>
+                    <p><svg style="width:20px;height:20px;fill:var(--color-primary);" viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg> <span id="footer-phone"></span></p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title" data-es="Horarios" data-en="Opening Hours">Opening Hours</h4>
+                    <p id="footer-hours" style="display: block;"></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <!-- Script Automático para el rango de años solicitado por Menutech -->
+                <div id="dynamic-copyright-footer"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Optimization mapping
+        const optimizeCloudinaryUrl = (url, options = {}) => {
+            if (!url || typeof url !== 'string' || !url.includes('res.cloudinary.com')) return url;
+            const [baseUrl, hash] = url.split('#');
+            if (!baseUrl.includes('/upload/')) return url;
+            const parts = baseUrl.split('/upload/');
+
+            let pathSegments = parts[1].split('/');
+            if (pathSegments.length > 1) {
+                const firstSegment = pathSegments[0];
+                const isVersion = /^v\d+$/.test(firstSegment);
+                const isTransformation = !isVersion && (firstSegment.includes('_') || firstSegment.includes(','));
+                if (isTransformation) pathSegments.shift();
+            }
+            const cleanPath = pathSegments.join('/');
+
+            let transformations = ['f_auto', 'q_auto:eco', 'dpr_auto'];
+            if (options.width) transformations.push(`w_${options.width}`);
+            if (options.height) transformations.push(`h_${options.height}`);
+            if (options.crop) transformations.push(`c_${options.crop}`);
+            
+            const transformationString = transformations.join(',');
+            return `${parts[0]}/upload/${transformationString}/${cleanPath}${hash ? '#' + hash : ''}`;
+        };
+
+        // Icons definition (Notice: Twitter replaced by TikTok automatically)
+        const SOCIAL_ICONS = {
+            instagram: `<svg style="width:22px;height:22px;fill:currentColor" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>`,
+            facebook: `<svg style="width:22px;height:22px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>`,
+            twitter: `<svg style="width:22px;height:22px;fill:currentColor" viewBox="0 0 24 24"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.04.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.23-.9 4.45-2.34 6.09-1.65 1.88-4 2.98-6.49 2.95-2.58-.04-5.06-1.22-6.69-3.23-1.6-1.97-2.22-4.59-1.74-7.06.46-2.39 1.85-4.54 3.86-5.8 2.06-1.3 4.61-1.75 7.02-1.35v4.07c-1.07-.46-2.35-.49-3.46-.1-1.17.4-2.1 1.34-2.53 2.49-.43 1.13-.35 2.45.2 3.51.52 1.01 1.45 1.74 2.58 2.03 1.16.28 2.4.1 3.4-.49.96-.56 1.63-1.46 1.9-2.55.15-.6.18-1.24.16-1.87-.04-4.57-.02-9.15-.02-13.73z"/></svg>`
+        };
+
+        // Translations & Multi-language
+        let currentLang = 'en';
+
+        // Translation Maps for Dynamic Texts
+        const ES_DICT = {
+            "Monday to Thursday": "Lunes a Jueves",
+            "Friday and Saturday": "Viernes y Sábado",
+            "Sunday": "Domingo"
+        };
+        const EN_DICT = {
+            "Lunes a Jueves": "Monday to Thursday",
+            "Viernes y Sábado": "Friday and Saturday",
+            "Domingo": "Sunday"
+        };
+
+        function translateText(text, targetLang) {
+            if (!text) return text;
+            let result = text;
+            const dict = targetLang === 'es' ? ES_DICT : EN_DICT;
+            for (let key in dict) {
+                const regex = new RegExp(key, "gi");
+                result = result.replace(regex, dict[key]);
+            }
+            return result;
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-es]').forEach(el => {
+                if(el.getAttribute(`data-${lang}`)) {
+                    el.textContent = el.getAttribute(`data-${lang}`);
+                }
+            });
+
+            // Update Lang Switcher UI
+            const esBtn = document.getElementById('lang-es');
+            const enBtn = document.getElementById('lang-en');
+            if (esBtn && enBtn) {
+                if (lang === 'es') {
+                    esBtn.classList.add('active');
+                    enBtn.classList.remove('active');
+                } else {
+                    enBtn.classList.add('active');
+                    esBtn.classList.remove('active');
+                }
+            }
+
+            // Trigger re-render to apply language to dynamic data
+            if(window.MENU_TECH_STATE) {
+                updateUI(window.MENU_TECH_STATE, true);
+            }
+            
+            // Dynamic Footer Refresh
+            renderFooterDate();
+        }
+
+        // Script Dinámico del Footer (Año y Marca)
+        function renderFooterDate() {
+            const currentYear = new Date().getFullYear();
+            const footerContainer = document.getElementById('dynamic-copyright-footer');
+            const rightText = currentLang === 'es' ? 'Todos los derechos reservados.' : 'All Rights Reserved.';
+            
+            footerContainer.innerHTML = `&copy; 2015-${currentYear} Powered by <a href="https://menutech.xyz" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">Menutech</a>. ${rightText}`;
+        }
+
+        // Apply Data Updates
+        function updateUI(data, isLangSwitch = false) {
+            if (!data) return;
+
+            // Brand & Address
+            if (data.title && !isLangSwitch) {
+                const navBrand = document.getElementById('nav-brand');
+                if (navBrand) navBrand.textContent = data.title;
+            }
+            if (data.heroAddress !== undefined) {
+                const addr = document.getElementById('hero-address');
+                if (addr) addr.textContent = data.heroAddress;
+            }
+
+            // Images
+            if (!isLangSwitch) {
+                if (data.heroImg) {
+                    const heroSection = document.getElementById('hero-section');
+                    if (heroSection) {
+                        heroSection.style.backgroundImage = `url('${optimizeCloudinaryUrl(data.heroImg, { width: 1920 })}')`;
+                    }
+                }
+                if (data.logoImg) {
+                    const optLogo = optimizeCloudinaryUrl(data.logoImg, { width: 400 });
+                    document.getElementById('hero-logo').src = optLogo;
+                    document.getElementById('favicon').href = optLogo;
+                }
+                if (data.aboutImg1) document.getElementById('about-img-1').src = optimizeCloudinaryUrl(data.aboutImg1, { width: 600 });
+                if (data.aboutImg2) document.getElementById('about-img-2').src = optimizeCloudinaryUrl(data.aboutImg2, { width: 600 });
+            }
+
+            // Info Section
+            if (data.info) {
+                let hoursStr = data.info.hours || '';
+                hoursStr = translateText(hoursStr, currentLang);
+
+                document.getElementById('info-hours').innerHTML = hoursStr.replace(/\n/g, '<br>');
+                document.getElementById('footer-hours').innerHTML = hoursStr.replace(/\n/g, '<br>');
+                
+                document.getElementById('info-phone').textContent = data.info.phone || '';
+                document.getElementById('footer-phone').textContent = data.info.phone || '';
+                
+                document.getElementById('info-address').textContent = data.info.address || '';
+                document.getElementById('footer-address').textContent = data.info.address || '';
+            }
+
+            // Paragraphs Logic
+            if (data.paragraphs && data.paragraphs.about) {
+                let text = data.paragraphs.about;
+                const paragraphsArr = text.split('\n\n').filter(p => p.trim() !== '');
+                
+                if(currentLang === 'en' && text.includes('Desde hace 4 años')) {
+                    paragraphsArr[0] = "For 4 years, our restaurant was born with the illusion of offering Mexican food full of flavor, tradition and that special touch that makes our customers want to return.";
+                    paragraphsArr[1] = "Over the years, we have become a place where families and friends can enjoy dishes prepared with dedication and love. Among the favorites of our clients are the Crazy Burrito, the Texan Burrito and our delicious Burrito Bowl.";
+                    paragraphsArr[2] = "But if there is a dish that has earned a special place in the hearts of our customers, it is our Arroz con Pollo, one of the most popular and loved in the house. Thank you for being part of our history and for allowing us to continue serving flavor in every dish!";
+                }
+
+                if(paragraphsArr[0]) document.getElementById('about-p1').textContent = paragraphsArr[0];
+                if(paragraphsArr[1]) document.getElementById('about-p2').textContent = paragraphsArr[1];
+                if(paragraphsArr[2]) document.getElementById('about-p3').textContent = paragraphsArr[2];
+            }
+
+            // Socials
+            if (data.socials && !isLangSwitch) {
+                const socContainer = document.getElementById('social-icons');
+                if (socContainer) {
+                    socContainer.innerHTML = data.socials.map(s => {
+                        let platformKey = s.platform.toLowerCase();
+                        if(platformKey === 'twitter' || s.url.includes('tiktok')) platformKey = 'twitter'; 
+                        
+                        return `
+                        <a href="${s.url}" target="_blank" class="social-link">
+                            ${SOCIAL_ICONS[platformKey] || ''}
+                        </a>
+                    `}).join('');
+                }
+            }
+
+            // Clean Image Grid Gallery (Only Photos)
+            if (data.gallery) {
+                const container = document.getElementById('gallery-container');
+                if (container) {
+                    container.innerHTML = data.gallery.map(img => {
+                        return `
+                            <div class="gallery-item">
+                                <img src="${optimizeCloudinaryUrl(img, { width: 500, height: 500, crop: 'fill' })}" loading="lazy" alt="Delicious Dish">
+                            </div>
+                        `;
+                    }).join('');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial render
+            renderFooterDate();
+            
+            if (window.MENU_TECH_STATE) {
+                updateUI(window.MENU_TECH_STATE);
+            }
+
+            // Event Listeners for translation
+            document.getElementById('lang-es').addEventListener('click', () => applyLanguage('es'));
+            document.getElementById('lang-en').addEventListener('click', () => applyLanguage('en'));
+
+            // Mobile Navbar Toggle
+            const navbarToggler = document.getElementById('navbar-toggler');
+            const navMenu = document.getElementById('nav-menu');
+
+            navbarToggler.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icons = navbarToggler.querySelectorAll('.toggler-icon');
+                if(navMenu.classList.contains('active')) {
+                    icons[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    icons[1].style.opacity = '0';
+                    icons[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    icons.forEach(icon => { icon.style.transform = 'none'; icon.style.opacity = '1'; });
+                }
+            });
+
+            // Navbar Scroll Effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '10px 0';
+                    navbar.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+                } else {
+                    navbar.style.padding = '15px 0';
+                    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
